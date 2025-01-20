@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { Phone, Mail, MessageCircle, Calendar, ArrowRight, GraduationCap, Book, Code } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+import { useTheme } from "@/contexts/ThemeContext"
 
 const coursePackages = [
   {
@@ -57,8 +58,11 @@ const contactInfo = [
 ]
 
 export function ExploreCourses() {
+  const { theme } = useTheme()
   return (
-    <section className="py-24 relative overflow-hidden bg-gradient-to-b from-orange-50 to-white">
+    <section
+      className={`py-24 relative overflow-hidden bg-gradient-to-b from-${theme === "orange" ? "orange" : "blue"}-50 to-white`}
+    >
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]" />
       <div className="relative container mx-auto px-4">
         <div className="text-center mb-16">
@@ -68,7 +72,10 @@ export function ExploreCourses() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <Badge variant="secondary" className="mb-4 bg-orange-100 text-orange-700 hover:bg-orange-100">
+            <Badge
+              variant="secondary"
+              className={`mb-4 bg-${theme === "orange" ? "orange" : "blue"}-100 text-${theme === "orange" ? "orange" : "blue"}-700 hover:bg-${theme === "orange" ? "orange" : "blue"}-100`}
+            >
               Christmas Special Offer
             </Badge>
             <h2 className="text-4xl font-bold mb-4 text-slate-900">Explore Our Courses</h2>
@@ -119,19 +126,28 @@ export function ExploreCourses() {
               <Link href={`/courses/${course.title.toLowerCase().replace(/\s+/g, "-")}`}>
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="group p-6 rounded-2xl bg-white border border-orange-100 hover:border-orange-200 hover:shadow-lg transition-all duration-300"
+                  className={`group p-6 rounded-2xl bg-white border border-${theme === "orange" ? "orange" : "blue"}-100 hover:border-${theme === "orange" ? "orange" : "blue"}-200 hover:shadow-lg transition-all duration-300`}
                 >
                   <h3 className="text-lg font-semibold text-slate-900 mb-2">{course.title}</h3>
-                  <p className="text-sm text-orange-600 mb-4">{course.students} students</p>
+                  <p className={`text-sm text-${theme === "orange" ? "orange" : "blue"}-600 mb-4`}>
+                    {course.students} students
+                  </p>
                   <div className="space-y-2">
                     {course.subjects.map((subject, i) => (
-                      <div key={subject} className="text-sm text-slate-600 flex items-center">
-                        <div className="w-1.5 h-1.5 rounded-full bg-orange-400 mr-2" />
+                      <div
+                        key={subject}
+                        className={`text-sm text-${theme === "orange" ? "orange" : "blue"}-600 flex items-center`}
+                      >
+                        <div
+                          className={`w-1.5 h-1.5 rounded-full bg-${theme === "orange" ? "orange" : "blue"}-400 mr-2`}
+                        />
                         {subject}
                       </div>
                     ))}
                   </div>
-                  <div className="mt-4 flex items-center text-orange-600 group-hover:translate-x-2 transition-transform">
+                  <div
+                    className={`mt-4 flex items-center text-${theme === "orange" ? "orange" : "blue"}-600 group-hover:translate-x-2 transition-transform`}
+                  >
                     <span className="text-sm font-medium">View details</span>
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </div>
@@ -153,10 +169,14 @@ export function ExploreCourses() {
             <motion.div key={text} whileHover={{ scale: 1.02 }} className="group">
               <Link
                 href={href}
-                className="flex items-center justify-center gap-2 p-4 rounded-xl bg-white border border-orange-100 hover:border-orange-200 hover:shadow-lg transition-all duration-300"
+                className={`flex items-center justify-center gap-2 p-4 rounded-xl bg-white border border-${theme === "orange" ? "orange" : "blue"}-100 hover:border-${theme === "orange" ? "orange" : "blue"}-200 hover:shadow-lg transition-all duration-300`}
               >
-                <Icon className="h-5 w-5 text-orange-500" />
-                <span className="font-medium text-slate-900 group-hover:text-orange-600 transition-colors">{text}</span>
+                <Icon className={`h-5 w-5 text-${theme === "orange" ? "orange" : "blue"}-500`} />
+                <span
+                  className={`font-medium text-slate-900 group-hover:text-${theme === "orange" ? "orange" : "blue"}-600 transition-colors`}
+                >
+                  {text}
+                </span>
               </Link>
             </motion.div>
           ))}
