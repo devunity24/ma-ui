@@ -5,13 +5,8 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-import { BookOpen, Video, Users, HelpCircle, Clock, FileText, Search, Menu, Play } from 'lucide-react'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { BookOpen, Video, Users, HelpCircle, Clock, FileText, Search, Menu, Play } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -23,19 +18,17 @@ export default function Home() {
     <div className="min-h-screen bg-orange-50">
       {/* Hero Section */}
       <section className="pt-8 pb-16 px-4 bg-gradient-to-b from-orange-100 to-orange-50">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="bg-orange-500 text-white py-2 px-4 text-center mb-12 rounded-full max-w-2xl mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
         >
-          <p className="text-sm font-medium">
-            🎉 Special Offer! 50% OFF All Courses - Limited Time Only!
-          </p>
+          <p className="text-sm font-medium">🎉 Special Offer! 50% OFF All Courses - Limited Time Only!</p>
         </motion.div>
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -51,15 +44,22 @@ export default function Home() {
                 Interactive learning experience with live classes, hands-on projects, and personalized feedback.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="flex-1 sm:flex-none bg-orange-500 text-white hover:bg-orange-600 transform hover:scale-105 transition-all duration-300">
+                <Button
+                  size="lg"
+                  className="flex-1 sm:flex-none bg-orange-500 text-white hover:bg-orange-600 transform hover:scale-105 transition-all duration-300"
+                >
                   Start Free Trial
                 </Button>
-                <Button size="lg" variant="outline" className="flex-1 sm:flex-none border-orange-500 text-orange-500 hover:bg-orange-100 transform hover:scale-105 transition-all duration-300">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="flex-1 sm:flex-none border-orange-500 text-orange-500 hover:bg-orange-100 transform hover:scale-105 transition-all duration-300"
+                >
                   Explore Courses
                 </Button>
               </div>
             </motion.div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
@@ -77,8 +77,6 @@ export default function Home() {
         </div>
       </section>
 
-      <ExploreCourses />
-
       {/* Features Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto max-w-6xl px-4">
@@ -88,7 +86,7 @@ export default function Home() {
               Comprehensive learning tools and resources designed to help you master complex subjects
             </p>
           </div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -128,6 +126,8 @@ export default function Home() {
         </div>
       </section>
 
+      <ExploreCourses />
+
       {/* Explore Lessons Section */}
       <section className="py-16 bg-orange-50">
         <div className="container mx-auto max-w-6xl px-4">
@@ -138,7 +138,7 @@ export default function Home() {
               <TabsTrigger value="latest">Latest</TabsTrigger>
             </TabsList>
             <TabsContent value="popular">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -165,7 +165,7 @@ export default function Home() {
               </motion.div>
             </TabsContent>
             <TabsContent value="latest">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -199,13 +199,13 @@ export default function Home() {
       <section className="py-16 bg-orange-100">
         <div className="container mx-auto max-w-6xl px-4">
           <h2 className="text-2xl font-semibold text-center mb-12 text-slate-900">Featured In</h2>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="flex justify-center items-center gap-12 flex-wrap"
           >
-            {['TOI', 'NBT', 'Education Times'].map((name, index) => (
+            {["TOI", "NBT", "Education Times"].map((name, index) => (
               <motion.div
                 key={name}
                 initial={{ opacity: 0, y: 20 }}
@@ -224,7 +224,7 @@ export default function Home() {
       <section className="py-16 bg-white">
         <div className="container mx-auto max-w-6xl px-4">
           <h2 className="text-3xl font-bold text-center mb-16 text-slate-900">What Our Students Say</h2>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -260,31 +260,43 @@ export default function Home() {
             <AccordionItem value="item-1">
               <AccordionTrigger>How do the live online classes work?</AccordionTrigger>
               <AccordionContent>
-                Our live online classes are conducted through a user-friendly video conferencing platform. You'll receive a link to join the class at the scheduled time. During the session, you can interact with the instructor, ask questions, and participate in discussions just like in a physical classroom.
+                Our live online classes are conducted through a user-friendly video conferencing platform. You'll
+                receive a link to join the class at the scheduled time. During the session, you can interact with the
+                instructor, ask questions, and participate in discussions just like in a physical classroom.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
               <AccordionTrigger>Can I access the course materials after the live sessions?</AccordionTrigger>
               <AccordionContent>
-                Yes, absolutely! All live sessions are recorded and made available in your student dashboard. You'll have access to these recordings, along with additional study materials, practice questions, and revision notes for the duration of your course subscription.
+                Yes, absolutely! All live sessions are recorded and made available in your student dashboard. You'll
+                have access to these recordings, along with additional study materials, practice questions, and revision
+                notes for the duration of your course subscription.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
               <AccordionTrigger>How often are new courses and materials added?</AccordionTrigger>
               <AccordionContent>
-                We regularly update our course catalog and add new materials. On average, we introduce 2-3 new courses every month and update existing courses with fresh content and practice materials weekly. Our team of expert educators ensures that the content is always up-to-date and aligned with the latest academic standards.
+                We regularly update our course catalog and add new materials. On average, we introduce 2-3 new courses
+                every month and update existing courses with fresh content and practice materials weekly. Our team of
+                expert educators ensures that the content is always up-to-date and aligned with the latest academic
+                standards.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4">
               <AccordionTrigger>Is there a mobile app available for learning on the go?</AccordionTrigger>
               <AccordionContent>
-                Yes, we have a mobile app available for both iOS and Android devices. The app allows you to access all course materials, watch video lessons, attempt quizzes, and even join live classes from your smartphone or tablet. It's designed to provide a seamless learning experience across all devices.
+                Yes, we have a mobile app available for both iOS and Android devices. The app allows you to access all
+                course materials, watch video lessons, attempt quizzes, and even join live classes from your smartphone
+                or tablet. It's designed to provide a seamless learning experience across all devices.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-5">
               <AccordionTrigger>What kind of support is available if I have questions or face issues?</AccordionTrigger>
               <AccordionContent>
-                We offer comprehensive support to all our students. You can reach out to our dedicated support team via email, live chat, or phone. For academic queries, we have a team of subject matter experts who can assist you. Additionally, we have community forums where you can interact with fellow students and instructors to discuss topics and clear doubts.
+                We offer comprehensive support to all our students. You can reach out to our dedicated support team via
+                email, live chat, or phone. For academic queries, we have a team of subject matter experts who can
+                assist you. Additionally, we have community forums where you can interact with fellow students and
+                instructors to discuss topics and clear doubts.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -295,10 +307,12 @@ export default function Home() {
       <section className="py-16 bg-gradient-to-r from-orange-500 to-orange-600 text-white">
         <div className="container mx-auto max-w-4xl px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Start Your Learning Journey Today</h2>
-          <p className="mb-8 text-orange-100">
-            Get unlimited access to all courses with our special offer!
-          </p>
-          <Button size="lg" variant="secondary" className="bg-white text-orange-600 hover:bg-orange-50 transform hover:scale-105 transition-all duration-300">
+          <p className="mb-8 text-orange-100">Get unlimited access to all courses with our special offer!</p>
+          <Button
+            size="lg"
+            variant="secondary"
+            className="bg-white text-orange-600 hover:bg-orange-50 transform hover:scale-105 transition-all duration-300"
+          >
             Explore All Courses
           </Button>
         </div>
@@ -334,12 +348,12 @@ export default function Home() {
             </div>
             <div>
               <h3 className="font-semibold mb-4 text-slate-900">Connect With Us</h3>
-              <p className="text-sm text-slate-600 mb-4">
-                Stay updated with our latest courses and offers
-              </p>
+              <p className="text-sm text-slate-600 mb-4">Stay updated with our latest courses and offers</p>
               <div className="flex gap-2">
                 <Input placeholder="Enter your email" className="bg-orange-50" />
-                <Button className="bg-orange-500 text-white hover:bg-orange-600 transform hover:scale-105 transition-all duration-300">Subscribe</Button>
+                <Button className="bg-orange-500 text-white hover:bg-orange-600 transform hover:scale-105 transition-all duration-300">
+                  Subscribe
+                </Button>
               </div>
             </div>
           </div>
@@ -355,17 +369,14 @@ export default function Home() {
 function FeatureCard({
   icon,
   title,
-  description
+  description,
 }: {
   icon: React.ReactNode
   title: string
   description: string
 }) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      transition={{ duration: 0.3 }}
-    >
+    <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
       <Card className="bg-white">
         <CardContent className="p-6">
           <div className="mb-4 text-orange-500">{icon}</div>
@@ -381,7 +392,7 @@ function TestimonialCard({
   name,
   course,
   image,
-  quote
+  quote,
 }: {
   name: string
   course: string
@@ -397,7 +408,12 @@ function TestimonialCard({
       <div className="flex items-center mb-4">
         <Avatar className="h-12 w-12 mr-4">
           <AvatarImage src={image} alt={name} />
-          <AvatarFallback>{name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+          <AvatarFallback>
+            {name
+              .split(" ")
+              .map((n) => n[0])
+              .join("")}
+          </AvatarFallback>
         </Avatar>
         <div>
           <h3 className="font-semibold text-slate-900">{name}</h3>
@@ -413,7 +429,7 @@ function VideoCard({
   title,
   thumbnail,
   views,
-  duration
+  duration,
 }: {
   title: string
   thumbnail: string
@@ -421,14 +437,10 @@ function VideoCard({
   duration: string
 }) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      transition={{ duration: 0.3 }}
-      className="group cursor-pointer"
-    >
+    <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }} className="group cursor-pointer">
       <div className="relative aspect-video rounded-lg overflow-hidden mb-2">
         <Image
-          src={thumbnail}
+          src={thumbnail || "/placeholder.svg"}
           alt={title}
           fill
           className="object-cover transition-transform group-hover:scale-105"
@@ -436,9 +448,7 @@ function VideoCard({
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
           <Play className="w-12 h-12 text-white" />
         </div>
-        <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-          {duration}
-        </div>
+        <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">{duration}</div>
       </div>
       <h3 className="font-semibold mb-1 group-hover:text-orange-500 transition-colors text-slate-900">{title}</h3>
       <p className="text-sm text-slate-600">{views} views</p>
