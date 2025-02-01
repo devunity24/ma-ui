@@ -29,6 +29,7 @@ import { motion } from "framer-motion";
 import { ExploreCourses } from "@/components/explore-courses";
 import { useTheme } from "@/contexts/ThemeContext";
 import { SiteHeader } from "@/components/site-header";
+import { AboutUs } from "@/components/about-us";
 
 function HomePage() {
   const { theme } = useTheme();
@@ -263,7 +264,7 @@ function HomePage() {
       >
         <div className="container mx-auto max-w-6xl px-4">
           <h2 className="text-2xl font-semibold text-center mb-12 text-slate-900">
-            Featured In
+            Featured in Leading Newspapers
           </h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -271,21 +272,48 @@ function HomePage() {
             transition={{ duration: 0.5 }}
             className="flex justify-center items-center gap-12 flex-wrap"
           >
-            {["TOI", "NBT", "Education Times"].map((name, index) => (
-              <motion.div
-                key={name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`h-16 w-32 rounded-lg shadow-md flex items-center justify-center transform hover:scale-105 transition-all duration-300 border-${
-                  theme === "orange" ? "orange" : "blue"
-                }-500 text-${
-                  theme === "orange" ? "orange" : "blue"
-                }-500 hover:bg-${theme === "orange" ? "orange" : "blue"}-100`}
-              >
-                <span className="font-medium">{name}</span>
-              </motion.div>
-            ))}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="h-20 w-20 relative transform hover:scale-105 transition-all duration-300"
+            >
+              <Image
+                src="/toi.png"
+                alt="Times of India"
+                width={80}
+                height={80}
+                className="rounded-xl shadow-lg"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="h-20 w-20 relative transform hover:scale-105 transition-all duration-300"
+            >
+              <Image
+                src="/indian-express.png"
+                alt="Indian Express"
+                width={80}
+                height={80}
+                className="rounded-xl shadow-lg"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="h-20 w-20 relative transform hover:scale-105 transition-all duration-300"
+            >
+              <Image
+                src="/nvt.jpg"
+                alt="NBT"
+                width={80}
+                height={80}
+                className="rounded-xl shadow-lg"
+              />
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -400,42 +428,20 @@ function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section
-        className={`py-16 bg-gradient-to-r from-${
-          theme === "orange" ? "orange" : "blue"
-        }-500 to-${theme === "orange" ? "orange" : "blue"}-600 text-white`}
-      >
-        <div className="container mx-auto max-w-4xl px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Start Your Learning Journey Today
-          </h2>
-          <p className="mb-8 text-orange-100">
-            Get unlimited access to all courses with our special offer!
-          </p>
-          <Button
-            size="lg"
-            variant="secondary"
-            className={`bg-white text-${
-              theme === "orange" ? "orange" : "blue"
-            }-600 hover:bg-${
-              theme === "orange" ? "orange" : "blue"
-            }-50 transform hover:scale-105 transition-all duration-300`}
-          >
-            Explore All Courses
-          </Button>
-        </div>
-      </section>
+      <AboutUs />
 
       {/* Footer */}
       <footer className="border-t py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
-              <h3 className="font-semibold mb-4 text-slate-900">About Us</h3>
+              <h3 className="font-semibold mb-4 text-slate-900">Our Mission</h3>
               <p className="text-sm text-slate-600">
-                Empowering students with practical knowledge in Science,
-                Mathematics, and Technology.
+                At Manocha Academy, our mission is to teach Science, Math and
+                Coding in a simple and practical way. Our educational videos
+                explain the school coursework with simple examples that you
+                experience every day! Let's learn every day from our everyday
+                life!
               </p>
             </div>
             <div>
