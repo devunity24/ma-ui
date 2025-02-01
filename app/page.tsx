@@ -279,7 +279,7 @@ function HomePage() {
               className="h-20 w-20 relative transform hover:scale-105 transition-all duration-300"
             >
               <Image
-                src="/toi.png"
+                src="./toi.png"
                 alt="Times of India"
                 width={80}
                 height={80}
@@ -293,7 +293,7 @@ function HomePage() {
               className="h-20 w-20 relative transform hover:scale-105 transition-all duration-300"
             >
               <Image
-                src="/indian-express.png"
+                src="./indian-express.png"
                 alt="Indian Express"
                 width={80}
                 height={80}
@@ -307,7 +307,7 @@ function HomePage() {
               className="h-20 w-20 relative transform hover:scale-105 transition-all duration-300"
             >
               <Image
-                src="/nvt.jpg"
+                src="./nvt.jpg"
                 alt="NBT"
                 width={80}
                 height={80}
