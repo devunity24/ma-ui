@@ -1,10 +1,10 @@
 "use client";
 
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Accordion,
   AccordionContent,
@@ -18,9 +18,10 @@ import {
   HelpCircle,
   Clock,
   FileText,
-  Search,
-  Menu,
   Play,
+  ChevronLeft,
+  ChevronRight,
+  Calendar,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -195,66 +196,175 @@ function HomePage() {
           <h2 className="text-3xl font-bold text-center mb-16 text-slate-900">
             Explore Lessons
           </h2>
-          <Tabs defaultValue="popular" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 max-w-[400px] mx-auto mb-12">
-              <TabsTrigger value="popular">Popular</TabsTrigger>
-              <TabsTrigger value="latest">Latest</TabsTrigger>
-            </TabsList>
-            <TabsContent value="popular">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                <VideoCard
-                  title="Introduction to Quantum Mechanics"
-                  thumbnail="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                  views="15K"
-                  duration="45:30"
-                />
-                <VideoCard
-                  title="Advanced Calculus: Multivariable Functions"
-                  thumbnail="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                  views="12K"
-                  duration="52:15"
-                />
-                <VideoCard
-                  title="Python for Data Science: Pandas Basics"
-                  thumbnail="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                  views="18K"
-                  duration="38:45"
-                />
-              </motion.div>
-            </TabsContent>
-            <TabsContent value="latest">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                <VideoCard
-                  title="Machine Learning: Neural Networks Explained"
-                  thumbnail="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1465&q=80"
-                  views="5K"
-                  duration="60:00"
-                />
-                <VideoCard
-                  title="Organic Chemistry: Reaction Mechanisms"
-                  thumbnail="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1465&q=80"
-                  views="3.5K"
-                  duration="55:20"
-                />
-                <VideoCard
-                  title="Statistics for Data Analysis"
-                  thumbnail="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1465&q=80"
-                  views="7K"
-                  duration="42:30"
-                />
-              </motion.div>
-            </TabsContent>
-          </Tabs>
+
+          {/* Upcoming Live Classes */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-8">
+              Upcoming Live Classes
+            </h3>
+            <VideoCarousel
+              type="live"
+              videos={[
+                {
+                  title:
+                    "Live Class: JEE Advanced Physics - Rotational Dynamics",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1434030216411-0b793f4b4173",
+                  date: "30 Jan, 2024",
+                  time: "10:00 AM",
+                  instructor: "Dr. Rahul Sharma",
+                },
+                {
+                  title: "Live Class: NEET Chemistry - Organic Chemistry",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1434030216411-0b793f4b4173",
+                  date: "30 Jan, 2024",
+                  time: "2:00 PM",
+                  instructor: "Dr. Priya Verma",
+                },
+                {
+                  title: "Live Class: Mathematics - Calculus",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1434030216411-0b793f4b4173",
+                  date: "31 Jan, 2024",
+                  time: "11:00 AM",
+                  instructor: "Prof. Amit Kumar",
+                },
+                {
+                  title: "Live Class: Python Programming - OOP Concepts",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1434030216411-0b793f4b4173",
+                  date: "31 Jan, 2024",
+                  time: "4:00 PM",
+                  instructor: "Mr. Sandeep Singh",
+                },
+                {
+                  title: "Live Class: Biology - Genetics and Evolution",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1434030216411-0b793f4b4173",
+                  date: "1 Feb, 2024",
+                  time: "10:00 AM",
+                  instructor: "Dr. Anjali Gupta",
+                },
+                {
+                  title: "Live Class: Economics - Microeconomics Principles",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1434030216411-0b793f4b4173",
+                  date: "1 Feb, 2024",
+                  time: "2:00 PM",
+                  instructor: "Prof. Rajesh Kumar",
+                },
+              ]}
+            />
+          </div>
+
+          {/* Popular Lessons */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-8">
+              Popular Lessons
+            </h3>
+            <VideoCarousel
+              type="recorded"
+              videos={[
+                {
+                  title: "Introduction to Quantum Mechanics",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb",
+                  views: "15K",
+                  duration: "45:30",
+                },
+                {
+                  title: "Advanced Calculus: Multivariable Functions",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb",
+                  views: "12K",
+                  duration: "52:15",
+                },
+                {
+                  title: "Python for Data Science: Pandas Basics",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb",
+                  views: "18K",
+                  duration: "38:45",
+                },
+                {
+                  title: "Chemistry: Chemical Bonding",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb",
+                  views: "10K",
+                  duration: "41:20",
+                },
+                {
+                  title: "Biology: Cell Structure and Function",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb",
+                  views: "9K",
+                  duration: "47:10",
+                },
+                {
+                  title: "Economics: Supply and Demand",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb",
+                  views: "11K",
+                  duration: "39:55",
+                },
+              ]}
+            />
+          </div>
+
+          {/* Latest Lessons */}
+          <div>
+            <h3 className="text-2xl font-semibold text-slate-900 mb-8">
+              Latest Lessons
+            </h3>
+            <VideoCarousel
+              type="recorded"
+              videos={[
+                {
+                  title: "Machine Learning: Neural Networks Explained",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+                  views: "5K",
+                  duration: "60:00",
+                },
+                {
+                  title: "Organic Chemistry: Reaction Mechanisms",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+                  views: "3.5K",
+                  duration: "55:20",
+                },
+                {
+                  title: "Statistics for Data Analysis",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+                  views: "7K",
+                  duration: "42:30",
+                },
+                {
+                  title: "Physics: Quantum Entanglement",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+                  views: "4K",
+                  duration: "47:15",
+                },
+                {
+                  title: "Advanced JavaScript: Promises and Async/Await",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+                  views: "6K",
+                  duration: "51:40",
+                },
+                {
+                  title: "Environmental Science: Climate Change Impact",
+                  thumbnail:
+                    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+                  views: "3K",
+                  duration: "58:20",
+                },
+              ]}
+            />
+          </div>
         </div>
       </section>
 
@@ -564,16 +674,98 @@ function TestimonialCard({
   );
 }
 
+function VideoCarousel({
+  type,
+  videos,
+}: {
+  type: "live" | "recorded";
+  videos: any[];
+}) {
+  const [currentPage, setCurrentPage] = React.useState(0);
+  const videosPerPage = 4;
+  const totalPages = Math.ceil(videos.length / videosPerPage);
+
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+  };
+
+  const prevPage = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+
+  return (
+    <div className="relative">
+      <div className="overflow-hidden">
+        <motion.div
+          key={currentPage}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          transition={{ duration: 0.3 }}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          {videos
+            .slice(
+              currentPage * videosPerPage,
+              (currentPage + 1) * videosPerPage
+            )
+            .map((video, index) => (
+              <VideoCard
+                key={index}
+                title={video.title}
+                thumbnail={video.thumbnail}
+                views={video.views}
+                duration={video.duration}
+                date={video.date}
+                time={video.time}
+                instructor={video.instructor}
+                type={type}
+              />
+            ))}
+        </motion.div>
+      </div>
+      {totalPages > 1 && (
+        <div className="flex justify-center mt-8 gap-2">
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={prevPage}
+            className="rounded-full"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={nextPage}
+            className="rounded-full"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function VideoCard({
   title,
   thumbnail,
   views,
   duration,
+  date,
+  time,
+  instructor,
+  type,
 }: {
   title: string;
   thumbnail: string;
-  views: string;
-  duration: string;
+  views?: string;
+  duration?: string;
+  date?: string;
+  time?: string;
+  instructor?: string;
+  type: "live" | "recorded";
 }) {
   const { theme } = useTheme();
   return (
@@ -592,18 +784,49 @@ function VideoCard({
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
           <Play className="w-12 h-12 text-white" />
         </div>
-        <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-          {duration}
-        </div>
+        {type === "live" && (
+          <Badge
+            variant="destructive"
+            className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1"
+          >
+            LIVE
+          </Badge>
+        )}
+        {duration && (
+          <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+            {duration}
+          </div>
+        )}
       </div>
       <h3
         className={`font-semibold mb-1 group-hover:text-${
           theme === "orange" ? "orange" : "blue"
-        }-500 transition-colors text-slate-900`}
+        }-500 transition-colors text-slate-900 line-clamp-2`}
       >
         {title}
       </h3>
-      <p className="text-sm text-slate-600">{views} views</p>
+      {type === "recorded" && views && (
+        <p className="text-sm text-slate-600">{views} views</p>
+      )}
+      {type === "live" && (
+        <div className="space-y-1">
+          {instructor && (
+            <p className="text-sm font-medium text-slate-700">{instructor}</p>
+          )}
+          {date && (
+            <div className="flex items-center gap-1 text-sm text-slate-600">
+              <Calendar className="h-4 w-4" />
+              <span>{date}</span>
+            </div>
+          )}
+          {time && (
+            <div className="flex items-center gap-1 text-sm text-slate-600">
+              <Clock className="h-4 w-4" />
+              <span>{time}</span>
+            </div>
+          )}
+        </div>
+      )}
     </motion.div>
   );
 }
